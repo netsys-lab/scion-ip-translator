@@ -1,0 +1,17 @@
+---
+ASes:
+  "1-0:0:fc00":
+    core: true
+    voting: true
+    authoritative: true
+    issuing: true
+    underlay: UDP/IPv6
+  "1-0:0:fc01":
+    cert_issuer: 1-0:0:fc00
+    underlay: UDP/IPv6
+  "1-0:0:fc02":
+    cert_issuer: 1-0:0:fc00
+    underlay: UDP/IPv6
+links:
+  - {a: "1-0:0:fc00-br1#1", b: "1-0:0:fc01#1", linkAtoB: CHILD, underlay: UDP/IPv6}
+  - {a: "1-0:0:fc00-br1#2", b: "1-0:0:fc02#1", linkAtoB: CHILD, underlay: UDP/IPv6}
