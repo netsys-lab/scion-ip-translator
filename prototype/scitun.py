@@ -77,7 +77,7 @@ def map_ipv4(isd: int, asn: int, interface: IPv4Address) -> IPv6Address:
 def unmap_ipv6(ip: IPv6Address, subnet_bits: int = 8
                ) -> Tuple[int, int, int, int, Union[IPv4Address, int]]:
     if not ip in SCION_NETWORK:
-        raise InvalidArgument("error: not an IPv6-mapped SCION address")
+        raise InvalidArgument("not a SCION-mapped IPv6 address")
 
     ip = int(ip)
     interface = ip & 0xffff_ffff_ffff_ffff
@@ -222,7 +222,7 @@ def scmp_to_icmp(l4: SCMP):
         return None
 
 
-def translate_egress(pkt, host_ip: IPv6Address, path_cache: PathCache):
+def translate_egress(pkt, host_ip: IPv6Address, hostPort: int, path_cache: PathCache):
     if not isinstance(pkt[0], IPv6):
         return None, None
 
@@ -253,7 +253,7 @@ def translate_egress(pkt, host_ip: IPv6Address, path_cache: PathCache):
         return None, None
 
     if isinstance(path[0], EmptyPath):
-        next_hop = (dst_host, l4.dport)
+        next_hop = (dst_host, hostPort) # (dst_host, l4.dport)
     else:
         next_hop = path[1]
 
@@ -368,7 +368,7 @@ def run_translation(host_ip: IPv6Interface, netif: str, tunif: str, port: int, d
                             packet, size= tun.read()
                             t = time.monotonic() % 1e4
                             print(f"[{t:9.4f}] TUN: {packet} ({size} B) >>>", end=" ")
-                            pkt, dest = translate_egress(packet, host_ip.ip, path_cache)
+                            pkt, dest = translate_egress(packet, host_ip.ip, port, path_cache)
                             if pkt is not None:
                                 print(f"{pkt} to {dest}", end=" ")
                                 if dest[0].version == host_ip.version:
