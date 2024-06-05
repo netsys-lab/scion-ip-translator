@@ -20,6 +20,7 @@ Preparation
 -----------
 Requirements:
 ```bash
+sudo apt-get install python3-pyroute2
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
@@ -62,9 +63,9 @@ sed -iE 's/"\[.*\]/"[10.128.2.2]/' gen/AS0_0_fc02/sd.toml
 4. Run SCION
 5. Run translators
 ```bash
-sudo PYTHONPATH=../scapy-scion-int ip netns exec host0 ./scitun.py 10.128.0.1 veth0 -d 10.128.0.2:30255
-sudo PYTHONPATH=../scapy-scion-int ip netns exec host1 ./scitun.py fc00:10fc:100::1/64 veth2 -d 10.128.1.2:30255
-sudo PYTHONPATH=../scapy-scion-int ip netns exec host2 ./scitun.py fc00:10fc:200::1/64 veth4 -d 10.128.2.2:30255
+sudo -E env PATH=$PATH PYTHONPATH=../scapy-scion-int ip netns exec host0 ./scitun.py 10.128.0.1 veth0 -d 10.128.0.2:30255
+sudo -E env PATH=$PATH PYTHONPATH=../scapy-scion-int ip netns exec host1 ./scitun.py fc00:10fc:100::1/64 veth2 -d 10.128.1.2:30255
+sudo -E env PATH=$PATH PYTHONPATH=../scapy-scion-int ip netns exec host2 ./scitun.py fc00:10fc:200::1/64 veth4 -d 10.128.2.2:30255
 ```
 
 Things to try:
