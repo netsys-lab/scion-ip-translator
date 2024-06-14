@@ -8,3 +8,5 @@ SCION-IP Translation Main Repository
 [Python Prototype](/prototype)
 
 [eBPF Prototype](/ebpf-prototype)
+
+[SCION VPP Plugin](/vpp) (WIP)

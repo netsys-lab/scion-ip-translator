@@ -1,0 +1,19 @@
+[log]
+level = "debug"
+
+[translator]
+isd_asn = "1-64512"
+gateway_addr = "fc01:fc:0::2/64"
+host_addr = "fc01:fc:0::1/64"
+gateway_addr4 = "10.100.0.2/24"
+host_addr4 = "10.100.0.1/24"
+
+[sciond_connection]
+address = "127.0.0.1:30255"
+
+[tap]
+name = "scion"
+
+[xdp]
+interface = "vpp0"
+rx_queues = 1

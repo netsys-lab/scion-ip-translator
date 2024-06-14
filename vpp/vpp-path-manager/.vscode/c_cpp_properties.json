@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "~/vpp/build-root/install-vpp_debug-native/vpp/include",
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/scion/include",
+                "${workspaceFolder}/build/_deps/asio-src/asio/include",
+                "${workspaceFolder}/build/_deps/spdlog-src/include",
+                "${workspaceFolder}/build/_deps/tomlplusplus-src/include",
+                "${workspaceFolder}/build/libbpf-prefix/src/libbpf/src"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang++",
+            "cStandard": "c17",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}
