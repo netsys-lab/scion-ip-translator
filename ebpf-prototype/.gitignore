@@ -1,0 +1,4 @@
+*.skel.h
+*.o
+build/
+.cache/
