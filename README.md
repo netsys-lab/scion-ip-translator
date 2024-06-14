@@ -10,3 +10,5 @@ SCION-IP Translation Main Repository
 [eBPF Prototype](/ebpf-prototype)
 
 [SCION VPP Plugin](/vpp) (WIP)
+
+[SCION-IP Translator for Android](https://github.com/netsys-lab/scion-ip-android)
