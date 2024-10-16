@@ -12,3 +12,5 @@ SCION-IP Translation Main Repository
 [SCION VPP Plugin](/vpp) (WIP)
 
 [SCION-IP Translator for Android](https://github.com/netsys-lab/scion-ip-android)
+
+[Plugin for CoreDNS](https://github.com/netsys-lab/coredns-scitra)
