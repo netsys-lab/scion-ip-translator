@@ -79,6 +79,10 @@ def load_files(directory: Path) -> Dict:
     data = {}
     with open(directory / "topology.json", "rt") as file:
         data["/topology"] = ("application/json", json.load(file))
+    for br_name, br in data["/topology"][1]["border_routers"].items():
+        for ifid, iface in br["interfaces"].items():
+            iface["underlay"]["public"] = iface["underlay"]["local"]
+            del iface["underlay"]["local"]
 
     data["/trcs"] = ("application/json", [])
     for trc in (directory / "certs").glob("*.trc"):
