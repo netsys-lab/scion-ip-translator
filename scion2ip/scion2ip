@@ -228,7 +228,7 @@ def scion2ip():
     parser = argparse.ArgumentParser(description="Map SCION to IPv6 addresses.")
     parser.add_argument("address", type=str, nargs='*',
         help="ISD-ASN Local-Prefix Subnet Interface")
-    parser.add_argument("-p", "--pipe", action="store_true", help="Read input from stdint")
+    parser.add_argument("-p", "--pipe", action="store_true", help="Read input from stdin")
     parser.add_argument("-s", "--subnet-bits", type=int, default=8, help="Length of the subnet ID")
     args = parser.parse_args()
 
@@ -260,7 +260,7 @@ def ip2scion():
     parser = argparse.ArgumentParser(description="Map IPv6 to SCION addresses.")
     parser.add_argument("ip", type=IPv6Address, action="store", nargs="?", default=None,
         help="IPv6-mapped SCION address")
-    parser.add_argument("-p", "--pipe", action="store_true", help="Read input from stdint")
+    parser.add_argument("-p", "--pipe", action="store_true", help="Read input from stdin")
     parser.add_argument("-s", "--subnet-bits", type=int, default=8, help="Length of the subnet ID")
     args = parser.parse_args()
 
